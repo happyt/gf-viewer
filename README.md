@@ -1,4 +1,4 @@
-# golf-reader
+# gf-reader
 
 ## Project setup
 ```
