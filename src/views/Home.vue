@@ -1,17 +1,19 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Main page"/>
+    <PingSocket/>
+    <ShowScores msg="Main page"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import ShowScores from '@/components/ShowScores.vue'
+import PingSocket from '@/components/PingSocket.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    ShowScores, PingSocket
   }
 }
 </script>

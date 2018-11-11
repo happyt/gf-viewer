@@ -1,29 +1,15 @@
 # gf-reader
 
 ## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
+latest node, v10
+latest vue cli
+cd ..
+vue create gf-reader - vuex, store, lint
+cd gf-reader
+yarn serve
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+npm i axios
+yarn add socket.io-client vue-socket.io

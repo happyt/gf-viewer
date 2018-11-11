@@ -2,16 +2,29 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
-     Scores here
+     Scores
     </p>
+    <div>
+      <ul>
+        <li v-for="pp in players" v-bind:key="pp.name">{{pp.name}}</li>
+      </ul>
+    </div>'
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'ShowScores',
   props: {
     msg: String
+  },
+    computed: {
+      players() { // also possible with mapGetters(['users'])
+        return this.$store.getters.players
+      }
+  },
+  created() {
+    this.$store.dispatch('getUsers')
   }
 }
 </script>
