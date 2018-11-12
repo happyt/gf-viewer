@@ -36,7 +36,7 @@ export default {
   methods: {
     pingServer() {
       // Send the "pingServer" event to the server.
-      this.$socket.emit('messageChannel', 'PING!')
+      this.$socket.emit('centralChannel', 'PING!')
     }
   }
 }

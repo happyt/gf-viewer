@@ -8,7 +8,7 @@ import VueSocketIO from 'vue-socket.io';
 
 export const SocketInstance = socketio('http://localhost:3000');
 
-Vue.use(VueSocketIO, SocketInstance)
+Vue.use(VueSocketIO, SocketInstance, store)
 
 Vue.config.productionTip = false
 
