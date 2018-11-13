@@ -3,6 +3,7 @@
     <p v-if="isConnected">We're connected to the server!</p>
     <p>Message from server: "{{socketMessage}}"</p>
     <button @click="pingServer()">Ping Server</button>
+    <button @click="pingStartStop()">PStart-Stop</button>
   </div>
 </template>
 
@@ -37,6 +38,10 @@ export default {
     pingServer() {
       // Send the "pingServer" event to the server.
       this.$socket.emit('centralChannel', 'PING!')
+    },
+    pingStartStop() {
+      // Send the "pingServer" event to the server.
+      this.$socket.emit('centralChannel', 'PINGo')
     }
   }
 }
