@@ -7,14 +7,16 @@ const api = "https://jsonplaceholder.typicode.com/users";
 const UPDATE_USERS = "UPDATE_USERS";
 const SET_LOADING = "SET_LOADING";
 
+const MESS = 'messageChannel'
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     loading: false,
     time: "1234",
-    madeConnection: false,
-    theMessage: 'apple',
+    centralConnection: false,
+    centralMessage: 'apple',
     players: [
       { name: "fred", hole: 1, score: -4, update: "2345" },
       { name: "jim", hole: 1, score: -3, update: "2345" },
@@ -23,39 +25,42 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    [UPDATE_USERS](state, users) {
-      console.log("update players", users);
-      state.players = users;
-      console.log('state', state);
+    UPDATE_USERS(state, users) {
+      console.log("update players", users)
+      state.players = users
+      console.log('state', state)
     },
-    [SET_LOADING](state, loading) {
+    SET_LOADING(state, loading) {
       state.loading = loading;
     },
     SOCKET_CONNECT(state) {
-      console.log('central')
-      state.madeConnection = true;
+      console.log('central connected')
+      state.centralConnection = true
+      this._vm.$socket.emit(MESS, 'central connected')
     },
 
     SOCKET_DISCONNECT(state) {
-      state.madeConnection = false;
+      state.centralConnection = false;
     },
 
     SOCKET_MESSAGECHANNEL(state, message) {
-      state.theMessage = message
+      console.log("YYYY: ", message[0])
+      state.centralMessage = message
     },
-    SOCKET_CENTRALCHANNEL(state, message) {
-      state.theMessage = message
+    SOCKET_COMMANDCHANNEL(state, message) {
+      console.log("XXXX: ", message[0])
+      state.centralMessage = message
     }
   },
   getters: {
     players(state) {
       return state.players;
     },
-    madeOne(state) {
-      return state.madeConnection;
+    oneConnected(state) {
+      return state.centralConnection;
     },
     oneMessage(state) {
-      return state.theMessage;
+      return state.centralMessage;
     }
   },
   actions: {

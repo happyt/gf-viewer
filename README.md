@@ -22,3 +22,10 @@ https://alligator.io/vuejs/vue-socketio/
 - yarn add socket.io-client vue-socket.io
 - add to a component, PingSocket.vue
 - add to vuex
+
+Vuex version moves a simple string to an array[0]
+
+- Using  this._vm.$socket.emit(MESS, 'central connected')
+- An alternative is to, export default new Vue({ in main.js
+- Then import vm from './main.js'
+- and then, vm.$socket.emit('event', 'payload')

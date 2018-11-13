@@ -1,7 +1,7 @@
 <template>
   <div>
     <p v-if="isConnected" >Central connection to the server!</p>
-    <p>Message from central server: "{{centralMessage}}"</p>
+    <p>Vuex message from server: "{{centralMessage}}"</p>
   </div>
 </template>
 <script>
@@ -12,7 +12,7 @@ export default {
   },
     computed: {
       isConnected() { 
-        return this.$store.getters.madeOne
+        return this.$store.getters.oneConnected
       },
       centralMessage() { 
         return this.$store.getters.oneMessage

@@ -1,14 +1,18 @@
 <template>
   <div>
     <p v-if="isConnected">We're connected to the server!</p>
-    <p>Message from server: "{{socketMessage}}"</p>
+    <p>Component message from server: "{{socketMessage}}"</p>
     <button @click="pingServer()">Ping Server</button>
-    <button @click="pingStartStop()">PStart-Stop</button>
+    <button @click="pingStartStop()">Start-Stop</button>
   </div>
 </template>
 
 <script>
+const MESS = 'messageChannel'
+const CMND = 'commandChannel'
+
 export default {
+  
   data() {
     return {
       isConnected: false,
@@ -19,7 +23,8 @@ export default {
   sockets: {
     connect() {
       // Fired when the socket connects.
-      console.log("connected")
+      console.log("component connected")
+      this.$socket.emit(MESS, 'component connected')
       this.isConnected = true;
     },
 
@@ -37,11 +42,11 @@ export default {
   methods: {
     pingServer() {
       // Send the "pingServer" event to the server.
-      this.$socket.emit('centralChannel', 'PING!')
+      this.$socket.emit(MESS, 'PING!')
     },
     pingStartStop() {
       // Send the "pingServer" event to the server.
-      this.$socket.emit('centralChannel', 'PINGo')
+      this.$socket.emit(CMND, 'PINGo')
     }
   }
 }
