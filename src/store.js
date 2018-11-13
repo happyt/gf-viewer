@@ -6,6 +6,7 @@ const api = "https://jsonplaceholder.typicode.com/users";
 
 const UPDATE_USERS = "UPDATE_USERS";
 const SET_LOADING = "SET_LOADING";
+const SOCKET_SEND = "SOCKET_SEND";
 
 const MESS = 'messageChannel'
 
@@ -38,6 +39,10 @@ export default new Vuex.Store({
       state.centralConnection = true
       this._vm.$socket.emit(MESS, 'central connected')
     },
+    SOCKET_SEND(state, message) {
+      console.log('sending central')
+      this._vm.$socket.emit(MESS, message)
+    },
 
     SOCKET_DISCONNECT(state) {
       state.centralConnection = false;
@@ -45,11 +50,11 @@ export default new Vuex.Store({
 
     SOCKET_MESSAGECHANNEL(state, message) {
       console.log("YYYY: ", message[0])
-      state.centralMessage = message
+      state.centralMessage = message[0]
     },
     SOCKET_COMMANDCHANNEL(state, message) {
       console.log("XXXX: ", message[0])
-      state.centralMessage = message
+      state.centralMessage = message[0]
     }
   },
   getters: {
@@ -72,6 +77,9 @@ export default new Vuex.Store({
             commit(UPDATE_USERS, userData.data)
             commit(SET_LOADING, false)
           })
+    },
+    sendMessage({ commit }, msg) {
+      commit(SOCKET_SEND, msg)       
     }
   }
 });
