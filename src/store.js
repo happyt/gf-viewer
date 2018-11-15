@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 let axios = require("axios");
 
-const api = "https://jsonplaceholder.typicode.com/users";
+const url = "https://jsonplaceholder.typicode.com/users";
 
 const UPDATE_USERS = "UPDATE_USERS";
 const SET_LOADING = "SET_LOADING";
@@ -31,7 +31,7 @@ export default new Vuex.Store({
       state.players = users
       console.log('state', state)
     },
-    
+
     SET_LOADING(state, loading) {
       state.loading = loading;
     },
@@ -75,7 +75,7 @@ export default new Vuex.Store({
     getUsers({ commit }) {
       commit(SET_LOADING, true);
       axios
-        .get(api)
+        .get(url)
           .then((userData) => {
             commit(UPDATE_USERS, userData.data)
             commit(SET_LOADING, false)
