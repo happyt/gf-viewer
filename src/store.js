@@ -31,17 +31,20 @@ export default new Vuex.Store({
       state.players = users
       console.log('state', state)
     },
+    
     SET_LOADING(state, loading) {
       state.loading = loading;
     },
+
+    SOCKET_SEND(state, message) {
+      console.log('sending central')
+      this._vm.$socket.emit(MESS, message)
+    },
+
     SOCKET_CONNECT(state) {
       console.log('central connected')
       state.centralConnection = true
       this._vm.$socket.emit(MESS, 'central connected')
-    },
-    SOCKET_SEND(state, message) {
-      console.log('sending central')
-      this._vm.$socket.emit(MESS, message)
     },
 
     SOCKET_DISCONNECT(state) {

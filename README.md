@@ -23,9 +23,13 @@ https://alligator.io/vuejs/vue-socketio/
 - add to a component, PingSocket.vue
 - add to vuex
 
-Vuex version moves a simple string to an array[0]
+Vuex version wraps a simple string to an array[0]
 
 - Using  this._vm.$socket.emit(MESS, 'central connected')
 - An alternative is to, export default new Vue({ in main.js
 - Then import vm from './main.js'
 - and then, vm.$socket.emit('event', 'payload')
+- PingSocket component largely direct to socket
+- CentralSocket largely via store actions
+
+- using project - 'chat-eg' for messages
