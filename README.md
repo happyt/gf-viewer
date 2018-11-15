@@ -18,7 +18,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - read from url
 
 https://alligator.io/vuejs/vue-socketio/
-
+yarn add 
 - yarn add socket.io-client vue-socket.io
 - add to a component, PingSocket.vue
 - add to vuex
@@ -33,3 +33,8 @@ Vuex version wraps a simple string to an array[0]
 - CentralSocket largely via store actions
 
 - using project - 'chat-eg' for messages
+
+Add firebase
+- yarn add firebase
+- yarn add moment
+- add src/firebase/init.js
